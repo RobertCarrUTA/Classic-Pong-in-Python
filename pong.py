@@ -49,6 +49,10 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
+# The two values below for .dx and .dy might need to be changed on your system if the ball moves too fast or too slow
+ball.dx = 0.05 # Movement in x direction
+ball.dy = 0.05 # Movement in y direction
+
 
 # Paddle Movement Functions
 def paddle_a_up():
@@ -81,3 +85,9 @@ window.onkeypress(paddle_b_down, ".")
 # Main game loop
 while True:
     window.update()
+
+    # Moving the ball
+    # On the first loop, the ball will start at (0, 0), then move relative
+    # to the values of ball.dx and ball.dy every time the loop runs
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
