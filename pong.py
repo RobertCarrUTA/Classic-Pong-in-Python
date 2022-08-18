@@ -1,5 +1,12 @@
-# The turtle module lets us do some basic graphics, and
-# unlike pygame, turtle comes built in
+# Controls:
+#   Paddle A:
+#       Up: W
+#       Down: S
+#   Paddle B: 
+#       Up: ;
+#       Down: .
+
+# Change paddle controls on the following lines: (to be filled in later)
 
 import turtle
 
@@ -42,6 +49,34 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
+
+# Paddle Movement Functions
+def paddle_a_up():
+    y = paddle_a.ycor() # .ycor() returns the y-coordinate
+    y += 20 # Makes the paddle move up 20 pixels
+    paddle_a.sety(y)
+
+def paddle_a_down():
+    y = paddle_a.ycor()
+    y -= 20
+    paddle_a.sety(y)
+
+def paddle_b_up():
+    y = paddle_b.ycor()
+    y += 20
+    paddle_b.sety(y)
+
+def paddle_b_down():
+    y = paddle_b.ycor()
+    y -= 20
+    paddle_b.sety(y)
+
+# Keyboard Binding
+window.listen() # Listen for keyboard presses
+window.onkeypress(paddle_a_up, "w")
+window.onkeypress(paddle_a_down, "s")
+window.onkeypress(paddle_b_up, ";")
+window.onkeypress(paddle_b_down, ".")
 
 # Main game loop
 while True:
