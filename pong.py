@@ -43,6 +43,16 @@ ball.color("white")
 ball.penup()
 ball.goto(0, 0)
 
+# Functions
+def paddle_a_up():
+    y = paddle_a.ycor() # .ycor() returns the y-coordinate
+    y += 20 # Makes the paddle move up 20 pixels
+    paddle_a.sety(y)
+
+# Keyboard Binding
+window.listen() # Listen for keyboard presses
+window.onkeypress(paddle_a_up, "w")
+
 # Main game loop
 while True:
     window.update()
