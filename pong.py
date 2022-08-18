@@ -3,8 +3,8 @@
 #       Up: W
 #       Down: S
 #   Paddle B: 
-#       Up: ;
-#       Down: .
+#       Up: Up Arrow
+#       Down: Down Arrow
 
 # Change paddle controls on the following lines: (to be filled in later)
 
@@ -79,8 +79,8 @@ def paddle_b_down():
 window.listen() # Listen for keyboard presses
 window.onkeypress(paddle_a_up, "w")
 window.onkeypress(paddle_a_down, "s")
-window.onkeypress(paddle_b_up, ";")
-window.onkeypress(paddle_b_down, ".")
+window.onkeypress(paddle_b_up, "Up")
+window.onkeypress(paddle_b_down, "Down")
 
 # Main game loop
 while True:
