@@ -18,6 +18,10 @@ window.setup(width = 800, height = 600)
 # By manually updating it, it allows us to speed up the game
 window.tracer(0)
 
+# Score
+score_a = 0
+score_b = 0
+
 # Paddle A
 paddle_a = turtle.Turtle()
 paddle_a.speed(0) # sets the speed of the animation to the maximum possible speed, if not done, it would be really slow
@@ -52,6 +56,15 @@ ball.goto(0, 0)
 # The two values below for .dx and .dy might need to be changed on your system if the ball moves too fast or too slow
 ball.dx = 0.05 # Movement in x direction
 ball.dy = -0.05 # Movement in y direction
+
+# Pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write("Player A: 0  Player B: 0", align="center", font=("Courier", 24, "normal"))
 
 
 # Paddle Movement Functions
@@ -107,16 +120,24 @@ while True:
     if ball.xcor() > 390:
         ball.goto(0, 0)
         ball.dx = -0.05
-
         # We need to reset the ball speed if it goes out of bounds while still making it launch in the opposite direction
         ball.dx = -0.05
         ball.dy = -0.05
+        # Raise player A's score
+        score_a += 1
+        pen.clear()
+        pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
+
 
     # If the ball goes off the left side, reset it to the center and reverse the direction
     if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx = 0.05
         ball.dy = 0.05
+        # Raise player B's score
+        score_b += 1
+        pen.clear()
+        pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
 
     # Collision Detection for Paddle A
     if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
