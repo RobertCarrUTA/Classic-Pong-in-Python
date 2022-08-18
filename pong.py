@@ -6,7 +6,12 @@
 #       Up: Up Arrow
 #       Down: Down Arrow
 
-# Change paddle controls on the following lines: (to be filled in later)
+# Change paddle controls on the following lines: 98-101
+
+# Change the speed of the ball on the following lines:
+#   Starting Speeds: 62, 63
+#   Speed on Reset: 129, 130 (ball goes off right side), 140, 141 (ball goes off left side)
+#   Speed after Paddle Collision: 154, 155 (Paddle A), 161, 162 (Paddle B)
 
 import turtle
 
