@@ -3,8 +3,8 @@
 #       Up: W
 #       Down: S
 #   Paddle B: 
-#       Up: ;
-#       Down: .
+#       Up: Up Arrow
+#       Down: Down Arrow
 
 # Change paddle controls on the following lines: (to be filled in later)
 
@@ -79,8 +79,8 @@ def paddle_b_down():
 window.listen() # Listen for keyboard presses
 window.onkeypress(paddle_a_up, "w")
 window.onkeypress(paddle_a_down, "s")
-window.onkeypress(paddle_b_up, ";")
-window.onkeypress(paddle_b_down, ".")
+window.onkeypress(paddle_b_up, "Up")
+window.onkeypress(paddle_b_down, "Down")
 
 # Main game loop
 while True:
@@ -106,9 +106,31 @@ while True:
     # If the ball goes off the right side, reset it to the center and reverse the direction
     if ball.xcor() > 390:
         ball.goto(0, 0)
-        ball.dx *= -1
+        ball.dx = -0.05
+
+        # We need to reset the ball speed if it goes out of bounds while still making it launch in the opposite direction
+        ball.dx = -0.05
+        ball.dy = -0.05
 
     # If the ball goes off the left side, reset it to the center and reverse the direction
     if ball.xcor() < -390:
         ball.goto(0, 0)
+        ball.dx = 0.05
+        ball.dy = 0.05
+
+    # Collision Detection for Paddle A
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
+        ball.setx(-340)
         ball.dx *= -1
+
+        # To increase the difficulty after every collision,
+        # we should increase the speed slightly
+        ball.dx *= 1.35
+        ball.dy *= 1.35
+
+    # Collision Detection for Paddle B
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
+        ball.setx(340)
+        ball.dx *= -1
+        ball.dx *= 1.35
+        ball.dy *= 1.35
