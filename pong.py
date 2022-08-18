@@ -51,7 +51,7 @@ ball.penup()
 ball.goto(0, 0)
 # The two values below for .dx and .dy might need to be changed on your system if the ball moves too fast or too slow
 ball.dx = 0.05 # Movement in x direction
-ball.dy = 0.05 # Movement in y direction
+ball.dy = -0.05 # Movement in y direction
 
 
 # Paddle Movement Functions
@@ -93,6 +93,12 @@ while True:
     ball.sety(ball.ycor() + ball.dy)
 
     # Border checking
+    # If the ball reaches the top of the window
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1 # Reverses the direction of the ball
+
+    # If the ball reaches the bottom of the window
+    if ball.ycor() < -290:
+        ball.sety(-290)
+        ball.dy *= -1
