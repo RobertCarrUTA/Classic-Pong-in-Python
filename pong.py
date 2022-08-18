@@ -6,7 +6,7 @@
 #       Up: ;
 #       Down: .
 
-# Change paddle controls on the following lines:
+# Change paddle controls on the following lines: (to be filled in later)
 
 import turtle
 
