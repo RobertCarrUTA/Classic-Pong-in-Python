@@ -11,5 +11,5 @@ Unedited controls are:
   * Up: W
   * Down: S
 * Paddle B (right side)
-  * Up: ;
-  * Down: .
+  * Up: Up Arrow
+  * Down: Down Arrow
