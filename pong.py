@@ -49,9 +49,15 @@ def paddle_a_up():
     y += 20 # Makes the paddle move up 20 pixels
     paddle_a.sety(y)
 
+def paddle_a_down():
+    y = paddle_a.ycor()
+    y -= 20
+    paddle_a.sety(y)
+
 # Keyboard Binding
 window.listen() # Listen for keyboard presses
 window.onkeypress(paddle_a_up, "w")
+window.onkeypress(paddle_a_down, "s")
 
 # Main game loop
 while True:
