@@ -91,3 +91,8 @@ while True:
     # to the values of ball.dx and ball.dy every time the loop runs
     ball.setx(ball.xcor() + ball.dx)
     ball.sety(ball.ycor() + ball.dy)
+
+    # Border checking
+    if ball.ycor() > 290:
+        ball.sety(290)
+        ball.dy *= -1 # Reverses the direction of the ball
