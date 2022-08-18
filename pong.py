@@ -102,3 +102,8 @@ while True:
     if ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
+
+    # If the ball goes off the right side, reset it to the center and reverse the direction
+    if ball.xcor() > 390:
+        ball.goto(0, 0)
+        ball.dx *= -1
